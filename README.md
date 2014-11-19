@@ -18,7 +18,7 @@ Add fabric server passwords for Maven Plugin to your ~/.m2/settings.xml file the
 ```
 Goto project folder, under fbdemo/src/main/fabric8, find the facebookdemo.properties file, 
 replace 3 mandatory parameters with the content from Facebook Deverloper site.
-(See my blog for more detail: )
+(See my blog for more detail: http://wei-meilin.blogspot.com/2014/11/jboss-fuse-connecting-to-facebook.html)
  
 ```
 1.   oAuthAppId
