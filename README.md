@@ -20,10 +20,11 @@ Goto project folder, under fbdemo/src/main/fabric8, find the facebookdemo.proper
 replace 3 mandatory parameters with the content from Facebook Deverloper site.
 (See my blog for more detail: )
  
--oAuthAppId
--oAuthAppSecret
--oAuthAccessToken
-
+```
+1.   oAuthAppId
+2.   oAuthAppSecret
+3.   oAuthAccessToken
+```
 
 run 
 ```
@@ -33,5 +34,6 @@ init.sh
 It will setup JBoss Fuse, install fabric, build and deploy the profile. 
 
 The demo video are located here too:
-https://vimeo.com/112186794
-https://vimeo.com/112250849  
+
+1.	https://vimeo.com/112186794
+2.	https://vimeo.com/112250849  
