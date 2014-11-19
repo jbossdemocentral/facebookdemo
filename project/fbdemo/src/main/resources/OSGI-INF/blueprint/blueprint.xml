@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:camel="http://camel.apache.org/schema/blueprint"
+       xsi:schemaLocation="
+       http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+ 
+  <bean id="birthdayCounter" class="org.blogdemo.fbdemo.BirthdayCounter" />
+  <bean id="fbUpdator" class="org.blogdemo.fbdemo.FBUpdator" />
+  <camelContext trace="false" id="blueprintContext" xmlns="http://camel.apache.org/schema/blueprint">
+    <propertyPlaceholder location="classpath:facebookdemo.properties" id="properties"/>
+    <route id="fbRoute">
+        <from uri="facebook://me?oAuthAppId={{oAuthAppId}}&amp;oAuthAppSecret={{oAuthAppSecret}}&amp;oAuthAccessToken={{oAuthAccessToken}}&amp;consumer.delay=86400000" />
+        <log message="Content back from FB ${body}"/>
+        <bean method="countBirthday(${body})" ref="birthdayCounter"/>
+        <choice>
+            <when id="mysterious">
+                <simple>${body} &lt; 0</simple>
+                <setBody>
+                    <constant>I am a very mysterious person</constant>
+                </setBody>
+            </when>
+            <when id="birthday">
+                <simple>${body} == 0</simple>
+                <setBody>
+                    <constant>It's My BIRTHDAY!!!!</constant>
+                </setBody>
+            </when>
+            <otherwise>
+            	<setBody>
+                    <simple>Counting down... ${body} more days to my birthday</simple>
+                </setBody>              
+            </otherwise>
+        </choice>
+        <setBody>
+            <method method="update(${body})" ref="fbUpdator"></method>
+        </setBody>
+        <to uri="facebook://postFeed?oAuthAppId={{oAuthAppId}}&amp;oAuthAppSecret={{oAuthAppSecret}}&amp;oAuthAccessToken={{oAuthAccessToken}}&amp;inBody=postUpdate" />
+    </route>
+</camelContext>
+
+</blueprint>

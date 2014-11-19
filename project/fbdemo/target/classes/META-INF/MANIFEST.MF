@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1416386654583
+Build-Jdk: 1.7.0_60-ea
+Built-By: christina
+Bundle-ManifestVersion: 2
+Bundle-Name: A Camel Blueprint Route
+Bundle-SymbolicName: fbdemo
+Bundle-Version: 1.0.0.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.blogdemo.fbdemo;uses:=facebook4j;version="1.0.0.SNAP
+ SHOT"
+Import-Package: facebook4j,org.osgi.service.blueprint;version="[1.0.0,2.
+ 0.0)"
+Tool: Bnd-1.50.0
