@@ -2,6 +2,7 @@
   "name":"Facebook Connector DEMO",
   "summary":"This is a simple demo, to avoid any privacy issues with your friends, this time we are going to get your birthday from Facebook, calculate how many days left till your next birthday, and then publish it to your Facebook status.",
   "author":"Christina Lin",
+  "category":"fuse",
   "level":"Beginner",
   "published":true,
   "prerequisites":"Java VM 1.6 or 1.7, Maven",
